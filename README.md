@@ -1,12 +1,14 @@
+## Vehicle Rental System
+
 Simple vehicle rental system written in Java, using OOP concepts.
 
 ## Features
 
-- add, remove and list vehicles
-- register, remove and list clients
-- create and list rentals
-- deliver vehicles
-- track delays
+- Add, remove and list vehicles
+- Register, remove and list clients
+- Create and list rentals
+- Deliver vehicles
+- Track delays
 - Calculate the price based on the vehicle type
 
 ## Compile
