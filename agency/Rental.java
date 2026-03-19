@@ -5,12 +5,14 @@ public class Rental{
     private final Client _client;
     private final Vehicle _vehicle;
     private int _time;
+    private double _price;
 
-    public Rental(int id, Vehicle vehicle, Client client, int time){
+    public Rental(int id, Vehicle vehicle, Client client, int time, double price){
         _id = id;
         _vehicle = vehicle;
         _client = client;
         _time = time;
+        _price = price;
     }
 
     public int getId(){
@@ -33,8 +35,12 @@ public class Rental{
         _time = time;
     }
 
-    public int calcPrice(){
-        return _vehicle.getPrice() * _time;
+    public double getPrice(){
+        return _price;
+    }
+
+    public void setPrice(double price){
+        _price = price;
     }
 
     @Override

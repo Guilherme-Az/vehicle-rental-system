@@ -102,7 +102,7 @@ public class Agency{
             System.out.println("\nTempo maior do que o tempo máximo permitido");
             return;
         }
-        Rental rental = new Rental(++_rentalId, vehicle, client, time);
+        Rental rental = new Rental(++_rentalId, vehicle, client, time, 0);
         vehicle.setAvailable(false);
         client.setHasRental(true);
         _rentals.add(rental);
@@ -127,21 +127,25 @@ public class Agency{
     public void advanceDate(int days){
         _day += days;
         for (Rental r: _rentals){
-            r.setTime(r.getTime() - days);
-            if (r.getTime() < 0){
-                r.getClient().setDelay(r.getClient().getDelay() - r.getTime());
+            for (int day = 0; day < days; day++){
+                r.setTime(r.getTime() - 1);
+                r.setPrice(r.getPrice() + r.getVehicle().getPrice());
+                System.out.println("Adicionado o preço do dia de aluguer. Preço atual: " + r.getPrice());
+                if (r.getTime() < 0){
+                    r.setPrice(r.getPrice() + r.getVehicle().getPrice() * 0.2); // If its over the deadline, the price increases 20%
+                    System.out.println("Adicionada multa de 20%. Preço atual: " + r.getPrice());
+                }
             }
-        }
+        }  
     }
 
-    public int deliverVehicle(Rental rental){ // returns the price
+    public double deliverVehicle(Rental rental){ // returns the price
         rental.getVehicle().setAvailable(true);
         rental.getClient().setHasRental(false);
-        int price = rental.calcPrice() + 5 * rental.getClient().getDelay();
         rental.getClient().setDelay(0);
         _rentals.remove(rental);
         _completedRentals.add(rental);
-        return price;
+        return rental.getPrice();
     }
 
     public void showAvailableVehicles(){

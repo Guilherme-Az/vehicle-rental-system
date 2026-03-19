@@ -39,7 +39,7 @@ public abstract class Vehicle{
         _available = available;
     }
 
-    public abstract int getPrice();
+    public abstract double getPrice();
     public abstract int getMaxTime();
 
     @Override

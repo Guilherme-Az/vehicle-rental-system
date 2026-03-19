@@ -22,6 +22,8 @@ public class Main{
             System.out.println("4. Entregar Veículo");
             System.out.println("5. Avançar dias");
             System.out.println("6. Mostrar data");
+            System.out.println("7. Mostrar preços");
+            System.out.println("8. Mostrar tempo máximo de aluguer");
             System.out.println("0. Sair");
 
             option = sc.nextInt();
@@ -29,7 +31,7 @@ public class Main{
 
             switch(option){
                 case 1:
-                    System.out.println("--- Adicionar ---");
+                    System.out.println("\n--- Adicionar ---");
                     System.out.println("1. Veículo");
                     System.out.println("2. Cliente");
                     System.out.println("3. Aluguer");
@@ -66,14 +68,14 @@ public class Main{
                             break;
 
                         case 3:
-                            System.out.print("Id do veículo: ");
+                            System.out.println("Id do veículo: ");
                             int vehicleId = sc.nextInt();
                             Vehicle v = agency.getVehicleById(vehicleId);
                             System.out.println("Id do Cliente: ");
                             int clientId = sc.nextInt();
                             Client c = agency.getClientById(clientId);
                             if(v == null){
-                                System.out.print("\nVeículo inválido");
+                                System.out.println("\nVeículo inválido");
                                 break;
                             }
                             else if(c == null){
@@ -92,7 +94,7 @@ public class Main{
                     break;
                 
                 case 2:
-                    System.out.println("--- Remover ---");
+                    System.out.println("\n--- Remover ---");
                     System.out.println("1. Veículo");
                     System.out.println("2. Cliente");
                     System.out.println("0. Nenhum");
@@ -122,7 +124,7 @@ public class Main{
                     break;
 
                 case 3:
-                    System.out.println("--- Listar ---");
+                    System.out.println("\n--- Listar ---");
                     System.out.println("1. Todos os veículos");
                     System.out.println("2. Apenas veículos disponíveis");
                     System.out.println("3. Todos os clientes");
@@ -180,6 +182,19 @@ public class Main{
                 case 6:
                     System.out.println("\n" + agency.showDate());
                     break;
+                
+                case 7:
+                    System.out.println("\nCarro: 50€ por dia");
+                    System.out.println("Mota: 30€ por dia");
+                    System.out.println("Camião: 100€ por dia");
+                    System.out.println("Por cada dia em atraso, o preço aumenta 20%");
+                    break;
+
+                case 8:
+                    System.out.println("\nCarro: 30 dias");
+                    System.out.println("Mota: 15 dias");
+                    System.out.println("Camião: 7 dias");
+                    break; 
             }
 
         } while (option != 0);
