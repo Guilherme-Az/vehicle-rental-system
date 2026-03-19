@@ -1,0 +1,7 @@
+#Binários e Compilados
+*.class
+
+# IDEs e temporários
+*.vscode/
+*.idea/
+*.log
